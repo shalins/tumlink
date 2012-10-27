@@ -7,8 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
 
-<%= yield %>
+		<div class="navbar ">
+  <div class="navbar-inner navbar-fixed-top">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+      <li><%= link_to "Feed", statuses_path %></li>
+      <!-- <li class="active"><a href="#">Feed</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Settings</a></li> -->
+    </ul>
+  </div>
+</div>
+
+	<div class="container">	
+		<%= yield %>
+	</div>
 
 </body>
 </html>
