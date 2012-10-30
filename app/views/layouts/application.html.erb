@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Social</title>
+  <title>Tumlink</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,37 +10,43 @@
 	
 
 
-<div class="navbar ">
-  <div class="navbar-inner navbar-fixed-top">
-    <a class="brand" href="#">Title</a>
-    <ul class="nav">
-      <li><%= link_to "Feed", statuses_path %></li>
-      <!-- <li class="active"><a href="#">Feed</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Settings</a></li> -->
-    </ul>
+  <div class="navbar ">
+    <div class="navbar-inner navbar-fixed-top">
+      <a class="brand" href="">Tumlink</a>
+      <ul class="nav">
+        <li><%= link_to "Feed", feed_path %></li>
+        <!-- <li class="active"><a href="#">Feed</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li> -->
+      </ul>
 
-<ul class="nav pull-right">
-  <li class="dropdown">
-    <% if user_signed_in? %>
-      <li><%= link_to current_user.full_name, edit_user_registration_path, class: "dropdown-toggle" %></li>
-      <li><%= link_to "Log Out", destroy_user_session_path, class: "dropdown-toggle", method: :delete %></li>
-    <% else %>
-      <li><%= link_to "Register", new_user_registration_path %></li>
-      <li><%= link_to "Log In", new_user_session_path %></li>    
-    <% end %>
-  </li>
-</ul>
+  <ul class="nav pull-right">
+    <li class="dropdown">
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.full_name, edit_user_registration_path, class: "dropdown-toggle" %></li>
+        <li><%= link_to "Log Out", logout_path, class: "dropdown-toggle" %></li>
+      <% else %>
+        <li><%= link_to "Register", register_path %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>    
+      <% end %>
+    </li>
+  </ul>
 
+    </div>
   </div>
-</div>
 
 
-	<div class="container">	
-		<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-		<%= yield %>
-	</div>
+  <div class="container">	
+
+    <% flash.each do |type, message| %>
+      <div class="alert <%= flash_class type %>">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <div class="notice"><h4><%= message %></h4></div>
+      </div>
+    <% end %>
+
+  	<%= yield %>
+  </div>
 	
 
 </body>

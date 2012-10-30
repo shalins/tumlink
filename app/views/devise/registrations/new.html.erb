@@ -1,27 +1,32 @@
-<h2>Sign up</h2>
+<div class="row">
+<div class="span4">
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "well"}) do |f| %>
   <%= devise_error_messages! %>
 
-	<div><%= f.label :first_name %><br />
-	<%= f.text_field :first_name %></div>	
+  <fieldset>
+	 	<legend>Sign up</legend>
 
-	<div><%= f.label :last_name %><br />
-	<%= f.text_field :last_name %></div>	
+	
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :profile_name %>	
+	<%= f.input :email %>
+	<%= f.input :password %>	
+	<%= f.input :password_confirmation %>
+	<div class="form-actions">
+	<%= f.button :submit, "Sign up" %>
+	</div>
+</fieldset>
 
-	<div><%= f.label :profile_name %><br />
-	<%= f.text_field :profile_name %></div>	
-
-	<div><%= f.label :email %><br />
-	<%= f.email_field :email %></div>
-
-	<div><%= f.label :password %><br />
-	<%= f.password_field :password %></div>
-
-	<div><%= f.label :password_confirmation %><br />
-	<%= f.password_field :password_confirmation %></div>
-
-	<div><%= f.submit "Sign up" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+<div class="span8">
+<h1>Hey, guess what? you should sign up!</h1>
+
+</div>
+</div>
+
