@@ -21,7 +21,30 @@ class User < ActiveRecord::Base
                            }
   has_many :statuses
 
+
   def full_name
   	first_name + " " + last_name
   end
+
+  def gravatar_url
+    
+    stripped_email = email.strip
+    downcased_email = stripped_email.downcase
+    hash = Digest::MD5.hexdigest(downcased_email)
+    "http://gravatar.com/avatar/#{hash}"
+  end
+
+  def gravatar_for(user, options = {})
+  options = { :size => 50 }.merge(options)
+  options[:default] = "http://www.iconfinder.com/ajax/download/png/?id=43350&s=#{options[:size]}"
+  options[:default] = image_tag("default_gravatar_#{options[:size]}.png
+  gravatar_image_tag(user.email.downcase,
+                     :alt => user.full_name,
+                     :class => 'gravatar',
+                     :gravatar => options")
+
+end
+
+
+
 end
