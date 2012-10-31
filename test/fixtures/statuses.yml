@@ -7,3 +7,7 @@ one:
 two:
   content: MyText
   user: shalin
+
+three: 
+  content: "This is a status by an impostor"
+  user: james
